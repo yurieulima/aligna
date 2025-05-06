@@ -1,5 +1,5 @@
 # Usa a imagem oficial do Go
-FROM golang:1.21
+FROM golang:1.23.6
 
 # Cria diretório da aplicação
 WORKDIR /app
