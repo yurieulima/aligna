@@ -12,8 +12,12 @@ export default function PersonalityTest() {
   const [questions, setQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/questions")
-      .then((res) => res.json())
+    fetch("https://aligna-production.up.railway.app/questions")
+      .then(async res => {
+        const text = await res.text();
+        console.log("Resposta crua:", text);
+        return JSON.parse(text);
+      })
       .then((data) => setQuestions(data))
       .catch((err) => console.error("Erro ao buscar perguntas:", err));
   }, []);
